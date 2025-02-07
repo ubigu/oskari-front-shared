@@ -5,7 +5,7 @@ Oskari.registerLocalization(
         value: {
             guidedTour: {
                 title: 'Logging in',
-                message: 'This is an example Oskari application. Use "user" as both username and password to log in as a regular user. And use "admin" as username and "oskari" as password to log in as admin.'
+                message: 'This is the Oskari application managed by Ubigu Oy. On login questions, please contact: info@ubigu.fi'
             }
         }
     });
