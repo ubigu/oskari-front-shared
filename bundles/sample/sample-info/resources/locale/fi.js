@@ -5,7 +5,7 @@ Oskari.registerLocalization(
         value: {
             guidedTour: {
                 title: 'Kirjautuminen',
-                message: 'Tämä on Oskari-esimerkkisovellus. Käytä "user" sekä käyttäjätunnuksena että salasanana kirjautuaksesi tavallisena käyttäjänä. Käytä "admin" ja "oskari" kirjautuaksesi ylläpitäjänä.'
+                message: 'Tämä on Ubigu Oy:n hallinnoima Oskari sovellus. Kirjautumiskysymyksissä, ole yhteydessä: info@ubigu.fi'
             }
         }
     });
