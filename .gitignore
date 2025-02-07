@@ -2,3 +2,7 @@ dist/
 .vscode
 node_modules/
 libraries/Cesium
+
+.idea
+
+package-lock.json

@@ -1,0 +1,37 @@
+name: Build and release tag
+
+on:
+  push:
+    tags:
+      - "*"
+
+permissions:
+  contents: write
+
+jobs:
+  build-dist-packages:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+      attestations: write
+      id-token: write
+    steps:
+      - name: 'Checkout GitHub Action'
+        uses: actions/checkout@main
+      - name: 'Force tag to package version'
+        run: npm version ${{ github.ref_name }} || echo "Version already correct"
+# Create a gzip file containing the built frontend
+      - name: 'Build production Inventory Image'
+        run: |
+          docker build . --target buildimage --tag ubigu-oskari-${{ github.ref_name }} --build-arg BUILD_TARGET=build
+      - name: 'Extract production gzip'
+        run: |
+          id=$(docker create ubigu-oskari-${{ github.ref_name }})
+          docker cp $id:/opt/oskari/dist - | gzip > oskari-frontend-${{ github.ref_name }}.tar.gz
+          docker rm -v $id
+          - name: "Release zipped images"
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            oskari-frontend-${{ github.ref_name }}.tar.gz
